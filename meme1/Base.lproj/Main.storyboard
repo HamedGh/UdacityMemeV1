@@ -24,6 +24,9 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Igo-XH-TfN">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="yyh-jM-egj"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem title="Library" id="DNI-BI-Z4g">
                                         <connections>
@@ -38,35 +41,41 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gsy-Nh-sVy">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gsy-Nh-sVy">
                                 <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="BOTTOM" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TLC-zC-hmR">
-                                <rect key="frame" x="0.0" y="589" width="375" height="28"/>
+                                <rect key="frame" x="0.0" y="563" width="375" height="28"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="bottomTextEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="x4K-rH-D41"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TOP" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="690-p3-pF6">
-                                <rect key="frame" x="0.0" y="70" width="375" height="28"/>
+                                <rect key="frame" x="0.0" y="96" width="375" height="28"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="topTextEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="TSr-lw-vVz"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Gsy-Nh-sVy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1qh-hM-SiI"/>
-                            <constraint firstItem="Igo-XH-TfN" firstAttribute="top" secondItem="Gsy-Nh-sVy" secondAttribute="bottom" id="2ib-QI-jFf"/>
-                            <constraint firstItem="690-p3-pF6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="6" id="3CC-bL-dgV"/>
+                            <constraint firstItem="690-p3-pF6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="3CC-bL-dgV"/>
                             <constraint firstItem="TLC-zC-hmR" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="5au-By-Fbu"/>
                             <constraint firstItem="Igo-XH-TfN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DnZ-U6-R20"/>
                             <constraint firstItem="Igo-XH-TfN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JXw-dS-WAh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Gsy-Nh-sVy" secondAttribute="trailing" id="TMr-7i-aM7"/>
-                            <constraint firstItem="Igo-XH-TfN" firstAttribute="top" secondItem="TLC-zC-hmR" secondAttribute="bottom" constant="6" id="eeN-pa-8Mk"/>
+                            <constraint firstItem="Igo-XH-TfN" firstAttribute="top" secondItem="TLC-zC-hmR" secondAttribute="bottom" constant="32" id="eeN-pa-8Mk"/>
                             <constraint firstItem="Gsy-Nh-sVy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jiL-fS-Eou"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="690-p3-pF6" secondAttribute="trailing" id="jpX-N4-eav"/>
                             <constraint firstItem="690-p3-pF6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="m6z-EV-QIm"/>
+                            <constraint firstItem="Igo-XH-TfN" firstAttribute="top" secondItem="Gsy-Nh-sVy" secondAttribute="bottom" id="pmw-YO-Rmn"/>
                             <constraint firstItem="TLC-zC-hmR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uJd-Z5-KKP"/>
                             <constraint firstItem="Igo-XH-TfN" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ywp-WL-7SO"/>
                         </constraints>
@@ -89,6 +98,7 @@
                         <outlet property="cameraButton" destination="SM2-lc-obo" id="7OA-RZ-O2o"/>
                         <outlet property="cancelButton" destination="5UL-Qw-vcU" id="exj-fo-Pa5"/>
                         <outlet property="imagePickerView" destination="Gsy-Nh-sVy" id="J87-Yt-Az0"/>
+                        <outlet property="navigationBar" destination="nyF-yZ-yT0" id="dcQ-RV-5Gr"/>
                         <outlet property="pickButton" destination="DNI-BI-Z4g" id="g42-c5-djh"/>
                         <outlet property="shareButton" destination="s3Y-kt-yb9" id="L2I-qB-Ojw"/>
                         <outlet property="toolbar" destination="Igo-XH-TfN" id="rS3-zD-OSf"/>

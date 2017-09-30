@@ -18,7 +18,8 @@ UIBarPositioningDelegate{
     @IBOutlet var bottomText: UITextField!
     @IBOutlet var shareButton: UIBarButtonItem!
     @IBOutlet var cancelButton: UIBarButtonItem!
-    @IBOutlet var navBar: UINavigationBar!
+//    @IBOutlet var navBar: UINavigationBar!
+    @IBOutlet var navigationBar: UINavigationItem!
     @IBOutlet var pickButton: UIBarButtonItem!
     @IBOutlet var cameraButton: UIBarButtonItem!
     @IBOutlet var toolbar: UIToolbar!
@@ -66,6 +67,32 @@ UIBarPositioningDelegate{
         return keyboardSize.cgRectValue.height
     }
     
+    @IBAction func topTextEditingChanged(_ sender: Any) {
+        
+        topText.text = topText.text?.uppercased()
+        
+        if (bottomText.text?.characters.count)!>0 && (imagePickerView.image != nil)
+        {
+            shareButton.isEnabled = true
+        }
+        else{
+            shareButton.isEnabled = false
+        }
+    }
+    
+    @IBAction func bottomTextEditingChanged(_ sender: Any) {
+        
+        bottomText.text = bottomText.text?.uppercased()
+        
+        if (bottomText.text?.characters.count)!>0 && (imagePickerView.image != nil)
+        {
+            shareButton.isEnabled = true
+        }
+        else{
+            shareButton.isEnabled = false
+        }
+    }
+    
     func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
     }
@@ -74,15 +101,20 @@ UIBarPositioningDelegate{
         dismiss(animated: true, completion: nil)
     }
     
+    
+    
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : Any]){
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            imagePickerView.contentMode = .scaleAspectFit
+//            imagePickerView.contentMode = .scaleAspectFit
             imagePickerView.image = image
+            
             topText.isEnabled = true
             bottomText.isEnabled = true
             pickButton.isEnabled = false
             cameraButton.isEnabled  = false
+            
+            cancelButton.isEnabled = true
         }
         dismiss(animated: true, completion: nil)
     }
@@ -93,8 +125,31 @@ UIBarPositioningDelegate{
         return true
     }
     
-    @IBAction func share(_ sender: Any) {
+    func generateMemedImage() -> UIImage {
         
+        toolbar.isHidden = true
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        toolbar.isHidden = false
+        return memedImage
+    }
+
+    
+    @IBAction func share(_ sender: Any) {
+        let memedImage = generateMemedImage()
+        let activityViewController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        // setting up dismissal of the activity view once the meme is successfully shared:
+        activityViewController.completionWithItemsHandler = {
+            (activity, success, items, error) in
+            if (success) {
+                self.dismiss(animated: true, completion: nil)
+                self.clear()
+            }
+        }
+        present(activityViewController, animated: true, completion: nil)
     }
     
     @IBAction func pickImageFromPhotoLibrary(_ sender: Any) {
