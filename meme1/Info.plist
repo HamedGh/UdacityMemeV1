@@ -41,5 +41,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>We need this access to save edited image</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need this access to pick images from your library</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We need this access to take picture form your camera</string>
 </dict>
 </plist>
