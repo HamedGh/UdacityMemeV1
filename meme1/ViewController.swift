@@ -114,7 +114,7 @@ UIBarPositioningDelegate{
             pickButton.isEnabled = false
             cameraButton.isEnabled  = false
             
-            cancelButton.isEnabled = true
+//            cancelButton.isEnabled = true
         }
         dismiss(animated: true, completion: nil)
     }
@@ -177,7 +177,7 @@ UIBarPositioningDelegate{
     }
     
     @IBAction func cancel(_ sender: Any) {
-        clear()
+        dismiss(animated: true, completion: nil)
     }
     
     func clear() {
@@ -194,7 +194,7 @@ UIBarPositioningDelegate{
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         
         shareButton.isEnabled = false
-        cancelButton.isEnabled = false
+//        cancelButton.isEnabled = false
         
         empty = true
     }
