@@ -8,12 +8,13 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "cellID"
 
 class CollectionViewController: UICollectionViewController {
-
+    
     @IBOutlet var collectionViewFlowLayout: UICollectionViewFlowLayout!
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var numberOfRows = 0
     var memes : [Meme]!
 
     override func viewDidLoad() {
@@ -23,11 +24,25 @@ class CollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        print(self.appDelegate.memes.count)
+        
+        if numberOfRows != self.appDelegate.memes.count {
+//            self.collectionView.beginUpdates()
+            self.collectionView?.insertItems(at: [IndexPath(row: appDelegate.memes.count-1, section: 0)])
+//            self.collectionView.endUpdates()
+            
+            self.numberOfRows = self.appDelegate.memes.count
+        }
+        
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -41,15 +56,17 @@ class CollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return appDelegate.memes.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MemeCollectionViewCell
+        let meme = appDelegate.memes[indexPath.row]
+        cell.imgView.image = meme.memedImage
         return cell
+        
     }
 
     // MARK: UICollectionViewDelegate

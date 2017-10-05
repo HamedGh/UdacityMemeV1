@@ -15,6 +15,7 @@
 		0547B3D51F8202F000114373 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0547B3D41F8202F000114373 /* Meme.swift */; };
 		0576FF311F822C3400FE6F14 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0576FF301F822C3400FE6F14 /* TableViewController.swift */; };
 		0576FF331F822F2F00FE6F14 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0576FF321F822F2F00FE6F14 /* CollectionViewController.swift */; };
+		0576FF351F86A23B00FE6F14 /* MemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0576FF341F86A23B00FE6F14 /* MemeCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		0547B3D41F8202F000114373 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		0576FF301F822C3400FE6F14 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		0576FF321F822F2F00FE6F14 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		0576FF341F86A23B00FE6F14 /* MemeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				0547B3D41F8202F000114373 /* Meme.swift */,
 				0576FF301F822C3400FE6F14 /* TableViewController.swift */,
 				0576FF321F822F2F00FE6F14 /* CollectionViewController.swift */,
+				0576FF341F86A23B00FE6F14 /* MemeCollectionViewCell.swift */,
 			);
 			path = meme1;
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0576FF351F86A23B00FE6F14 /* MemeCollectionViewCell.swift in Sources */,
 				0547B3D51F8202F000114373 /* Meme.swift in Sources */,
 				0517C4651F7ED5C7004EDBED /* ViewController.swift in Sources */,
 				0517C4631F7ED5C7004EDBED /* AppDelegate.swift in Sources */,

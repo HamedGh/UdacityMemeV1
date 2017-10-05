@@ -10,8 +10,9 @@ import UIKit
 
 class TableViewController: UITableViewController {
 
-    var memes: [Meme]!
-
+//    var memes: [Meme]!
+    var appDelegate:AppDelegate!
+    var numberOfRows = 0
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,29 +21,46 @@ class TableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        let object = UIApplication.shared.delegate
+        appDelegate = object as! AppDelegate
+//        self.memes = appDelegate.memes
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print(self.appDelegate.memes.count)
+        
+        if numberOfRows != self.appDelegate.memes.count {
+            tableView.beginUpdates()
+            tableView.insertRows(at: [IndexPath(row: appDelegate.memes.count-1, section: 0)], with: .automatic)
+            tableView.endUpdates()
+            self.numberOfRows = self.appDelegate.memes.count
+        }
+    
     }
     
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return 0
+//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0//memes.count
+        return self.appDelegate.memes.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "rowID", for: indexPath)
+        let meme = appDelegate.memes[indexPath.row]
+        cell.textLabel?.text = meme.topCaption
+        cell.detailTextLabel?.text = meme.bottomCaption
+        cell.imageView?.image = meme.originalImage
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

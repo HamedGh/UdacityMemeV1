@@ -27,6 +27,12 @@ UIBarPositioningDelegate{
     
     var empty:Bool = true
     
+    @IBAction func saveImage(_ sender: Any) {
+        let memedImage = generateMemedImage()
+        self.save(memedImage: memedImage)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated) // No need for semicolon
         //MARK:cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -137,6 +143,14 @@ UIBarPositioningDelegate{
         return memedImage
     }
 
+    func save(memedImage: UIImage) {
+        // Create the meme
+        let meme = Meme(topCaption: topText.text!, bottomCaption: bottomText.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
+        //Appending meme to the array of meme
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
+    }
     
     @IBAction func share(_ sender: Any) {
         let memedImage = generateMemedImage()
@@ -145,6 +159,7 @@ UIBarPositioningDelegate{
         activityViewController.completionWithItemsHandler = {
             (activity, success, items, error) in
             if (success) {
+                self.save(memedImage: memedImage)
                 self.dismiss(animated: true, completion: nil)
                 self.clear()
             }
