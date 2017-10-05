@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class ViewController: UIViewController,
     UIImagePickerControllerDelegate,
@@ -25,7 +26,26 @@ UIBarPositioningDelegate{
     @IBOutlet var toolbar: UIToolbar!
     @IBOutlet var imagePickerView: UIImageView!
     
+    @IBOutlet var containerView: UIView!
+    
+    @IBOutlet var topCaptionConstrant: NSLayoutConstraint!
+    @IBOutlet var bottomCaptionConstraint: NSLayoutConstraint!
+    
     var empty:Bool = true
+    
+    let memeTextAttributes:[String: Any] = [
+        NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
+        NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
+        NSAttributedStringKey.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 30)!,
+        NSAttributedStringKey.strokeWidth.rawValue: -4.0]
+    
+    //Setup Text Field Text Attributes
+    func configure(textField:UITextField, withText: String){
+        textField.delegate = self
+        textField.text = withText
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .center
+    }
     
     @IBAction func saveImage(_ sender: Any) {
         let memedImage = generateMemedImage()
@@ -185,9 +205,6 @@ UIBarPositioningDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        topText.delegate = self
-        bottomText.delegate = self
-
         clear()
     }
     
@@ -199,10 +216,10 @@ UIBarPositioningDelegate{
 
         imagePickerView.image = nil
         
-        bottomText.text = "BOTTOM"
+        configure(textField: bottomText, withText: "BOTTOM")
         bottomText.isEnabled = false
         
-        topText.text = "TOP"
+        configure(textField: topText, withText: "TOP")
         topText.isEnabled = false
         
         pickButton.isEnabled = true

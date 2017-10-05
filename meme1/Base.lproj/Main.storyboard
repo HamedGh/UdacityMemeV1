@@ -53,42 +53,51 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gsy-Nh-sVy">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bnG-Vl-NU5">
                                 <rect key="frame" x="0.0" y="64" width="375" height="510"/>
-                            </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="BOTTOM" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TLC-zC-hmR">
-                                <rect key="frame" x="0.0" y="514" width="375" height="28"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="bottomTextEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="x4K-rH-D41"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TOP" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="690-p3-pF6">
-                                <rect key="frame" x="0.0" y="96" width="375" height="28"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="topTextEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="TSr-lw-vVz"/>
-                                </connections>
-                            </textField>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TOP" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="690-p3-pF6">
+                                        <rect key="frame" x="10" y="60" width="355" height="28"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="topTextEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="TSr-lw-vVz"/>
+                                        </connections>
+                                    </textField>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gsy-Nh-sVy">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="510"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="BOTTOM" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TLC-zC-hmR">
+                                        <rect key="frame" x="10" y="422" width="355" height="28"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="bottomTextEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="x4K-rH-D41"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="TLC-zC-hmR" firstAttribute="leading" secondItem="bnG-Vl-NU5" secondAttribute="leading" constant="10" id="0JN-Oc-vDh"/>
+                                    <constraint firstAttribute="trailing" secondItem="TLC-zC-hmR" secondAttribute="trailing" constant="10" id="0YE-mf-McK"/>
+                                    <constraint firstAttribute="bottom" secondItem="TLC-zC-hmR" secondAttribute="bottom" constant="60" id="12J-Z9-j1y"/>
+                                    <constraint firstItem="690-p3-pF6" firstAttribute="top" secondItem="bnG-Vl-NU5" secondAttribute="top" constant="60" id="VW0-Ff-SGx"/>
+                                    <constraint firstAttribute="trailing" secondItem="690-p3-pF6" secondAttribute="trailing" constant="10" id="coa-dN-n7y"/>
+                                    <constraint firstItem="690-p3-pF6" firstAttribute="leading" secondItem="bnG-Vl-NU5" secondAttribute="leading" constant="10" id="sav-UR-xNj"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Gsy-Nh-sVy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="1qh-hM-SiI"/>
-                            <constraint firstItem="690-p3-pF6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="3CC-bL-dgV"/>
-                            <constraint firstItem="TLC-zC-hmR" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="5au-By-Fbu"/>
+                            <constraint firstItem="bnG-Vl-NU5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1gP-kr-ciV"/>
                             <constraint firstItem="Igo-XH-TfN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DnZ-U6-R20"/>
+                            <constraint firstItem="bnG-Vl-NU5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="GZW-3f-OYC"/>
                             <constraint firstItem="Igo-XH-TfN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JXw-dS-WAh"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Gsy-Nh-sVy" secondAttribute="trailing" id="TMr-7i-aM7"/>
-                            <constraint firstItem="Igo-XH-TfN" firstAttribute="top" secondItem="TLC-zC-hmR" secondAttribute="bottom" constant="32" id="eeN-pa-8Mk"/>
-                            <constraint firstItem="Gsy-Nh-sVy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jiL-fS-Eou"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="690-p3-pF6" secondAttribute="trailing" id="jpX-N4-eav"/>
-                            <constraint firstItem="690-p3-pF6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="m6z-EV-QIm"/>
-                            <constraint firstItem="Igo-XH-TfN" firstAttribute="top" secondItem="Gsy-Nh-sVy" secondAttribute="bottom" id="pmw-YO-Rmn"/>
-                            <constraint firstItem="TLC-zC-hmR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uJd-Z5-KKP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bnG-Vl-NU5" secondAttribute="trailing" id="Rup-0X-eb7"/>
+                            <constraint firstItem="Igo-XH-TfN" firstAttribute="top" secondItem="bnG-Vl-NU5" secondAttribute="bottom" id="f1e-aU-9Yv"/>
                             <constraint firstItem="Igo-XH-TfN" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ywp-WL-7SO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -101,14 +110,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bottomCaptionConstraint" destination="12J-Z9-j1y" id="kQu-5o-UeS"/>
                         <outlet property="bottomText" destination="TLC-zC-hmR" id="1Jr-yY-zTg"/>
                         <outlet property="cameraButton" destination="SM2-lc-obo" id="7OA-RZ-O2o"/>
                         <outlet property="cancelButton" destination="5UL-Qw-vcU" id="exj-fo-Pa5"/>
+                        <outlet property="containerView" destination="bnG-Vl-NU5" id="OeD-bM-WSu"/>
                         <outlet property="imagePickerView" destination="Gsy-Nh-sVy" id="J87-Yt-Az0"/>
                         <outlet property="navigationBar" destination="nyF-yZ-yT0" id="dcQ-RV-5Gr"/>
                         <outlet property="pickButton" destination="DNI-BI-Z4g" id="g42-c5-djh"/>
                         <outlet property="shareButton" destination="s3Y-kt-yb9" id="L2I-qB-Ojw"/>
                         <outlet property="toolbar" destination="Igo-XH-TfN" id="rS3-zD-OSf"/>
+                        <outlet property="topCaptionConstrant" destination="VW0-Ff-SGx" id="7GS-G7-eJN"/>
                         <outlet property="topText" destination="690-p3-pF6" id="U2h-at-r3z"/>
                     </connections>
                 </viewController>
